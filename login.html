@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Entrar ‒ Academia</title>
+
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      height: 100vh;
+      background: linear-gradient(135deg, #000000, #1c1c1c);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 60px;
+      background: rgba(255 255 255 / 0.05);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 50px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+    }
+
+    nav .logo {
+      font-family: 'Anton', sans-serif;
+      font-size: 32px;
+      color: #e6ddc5;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      font-family: 'Anton', sans-serif;
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #e6ddc5;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      padding: 80px 30px 40px;
+      background: rgba(255 255 255 / 0.05);
+      border-radius: 15px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .container h2 {
+      font-family: 'Anton', sans-serif;
+      font-size: 28px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .container p.subtitle {
+      font-size: 14px;
+      color: #ccc;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: none;
+      background: rgba(255 255 255 / 0.1);
+      color: white;
+      font-size: 14px;
+      outline: none;
+      transition: background 0.3s;
+    }
+
+    .form-group input::placeholder {
+      color: #ccc;
+    }
+
+    button[type='submit'] {
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      font-weight: 700;
+      color: white;
+      cursor: pointer;
+      background: linear-gradient(to right, #1e90ff, #00c6ff);
+      transition: background 0.3s;
+    }
+
+    button[type='submit']:hover {
+      background: linear-gradient(to right, #007fff, #00bfff);
+    }
+
+    .signup {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #ccc;
+      text-align: center;
+    }
+
+    .signup a {
+      color: #00c6ff;
+      text-decoration: none;
+    }
+
+    .signup a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">ACADEMIA</div>
+    <ul>
+      <li><a href="index.html">INÍCIO</a></li>
+      <li><a href="cadastrar.html">CADASTRAR</a></li>
+    </ul>
+  </nav>
+
+  <!-- FORMULÁRIO DE LOGIN -->
+  <div class="container">
+    <h2>Bem-vindo de volta!</h2>
+    <p class="subtitle">Acesse sua conta</p>
+
+    <form id="form-login">
+      <div class="form-group">
+        <input
+          type="email"
+          id="email"
+          placeholder="Email"
+          required
+          autocomplete="email"
+        />
+      </div>
+
+      <div class="form-group">
+        <input
+          type="password"
+          id="senha"
+          placeholder="Senha"
+          required
+          autocomplete="current-password"
+        />
+      </div>
+
+      <button type="submit">Entrar</button>
+    </form>
+
+    <p class="signup">
+      Não tem uma conta? <a href="cadastrar.html">Cadastrar</a>
+    </p>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    const form = document.getElementById('form-login');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value.trim();
+      const senha = document.getElementById('senha').value.trim();
+
+      if (email === '' || senha === '') {
+        alert('Preencha todos os campos.');
+        return;
+      }
+
+      // Buscar usuários cadastrados
+      const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+      const usuario = usuarios.find(u => u.email === email && u.senha === senha);
+
+      if (usuario) {
+        alert(`Bem-vindo, ${usuario.nome}!`);
+
+        // Salva como logado
+        localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+
+        // Redireciona para a página inicial
+        window.location.href = 'index.html';
+      } else {
+        alert('Email ou senha inválidos.');
+      }
+    });
+  </script>
+</body>
+</html>

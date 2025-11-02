@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site de Academia</title>
+  
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <nav>
+      <div class="logo">ACADEMIA</div>
+      <ul>
+        <li><a href="index.html">INÍCIO</a></li>
+        <li><a href="imc.html">IMC</a></li>
+        <li><a href="tmb.html">TMB</a></li> </ul>
+      </ul>
+    </nav>
+
+    <div class="hero-text">
+      <h1>TRANSFORME SEU CORPO</h1>
+      <p>Comece sua jornada fitness hoje.</p>
+      <button id="joinBtn">INSCREVA-SE</button>
+    </div>
+  </header>
+
+  <!-- OFFERS SECTION -->
+  <section class="offers">
+    <h2>O QUE OFERECEMOS</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="./img/pngtree-gym-filled-with-machines-and-equipment-picture-image_2774012.jpg" alt="Treino de Macros">
+        <p>Treino de Macros</p>
+      </div>
+      <div class="card">
+        <img src="./img/pngtree-gym-filled-with-machines-and-equipment-picture-image_2774012.jpg" alt="Treino Fitness">
+        <p>Treino Fitness</p>
+      </div>
+      <div class="card">
+        <img src="./img/pngtree-gym-filled-with-machines-and-equipment-picture-image_2774012.jpg" alt="Treino de Performance">
+        <p>Treino de Performance</p>
+      </div>
+      <div class="card">
+        <img src="./img/pngtree-gym-filled-with-machines-and-equipment-picture-image_2774012.jpg" alt="Treino em Grupo">
+        <p>Treino em Grupo</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNLOCK SECTION -->
+  <section class="unlock">
+    <div class="text">
+      <h2>LIBERE SEU POTENCIAL</h2>
+      <p>Agende sua consulta gratuita e receba um plano personalizado.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Academia. Todos os direitos reservados.</p>
+    <div class="footer-links">
+      <a href="#">Sobre</a> | 
+      <a href="#">Contato</a> | 
+      <a href="#">Instagram</a>
+    </div>
+  </footer>
+
+  <script>
+    // Quando clicar no botão JOIN NOW, rola até a seção "O QUE OFERECEMOS"
+    document.getElementById("joinBtn").addEventListener("click", function() {
+      document.querySelector(".offers").scrollIntoView({ behavior: "smooth" });
+    });
+  </script>
+
+</body>
+</html>

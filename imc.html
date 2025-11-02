@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMC - Academia</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* === ANIMAÇÃO DE FUNDO SUAVE === */
+    @keyframes backgroundPan {
+      0% {
+        background-position: 0% 0%;
+      }
+      50% {
+        background-position: 100% 100%;
+      }
+      100% {
+        background-position: 0% 0%;
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      /* Aplicação do fundo animado */
+      background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+      background-size: 400% 400%;
+      animation: backgroundPan 30s ease infinite; 
+
+      color: white;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* === NAVBAR (Mantida inalterada) === */
+    nav {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    nav .logo {
+      font-family: 'Anton', sans-serif;
+      font-size: 28px;
+      color: #e6ddc5;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      font-family: 'Anton', sans-serif;
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #e6ddc5;
+    }
+
+    /* === CONTEÚDO CENTRAL === */
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      width: 100%;
+    }
+
+    .imc-box {
+      background: #1a1a1a;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .imc-box h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: 32px;
+      margin-bottom: 25px; 
+      letter-spacing: 1px;
+    }
+
+    /* Estrutura de Grid para Duas Colunas - CHAVE DO LAYOUT */
+    .form-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between; 
+      gap: 15px; 
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      width: calc(50% - 7.5px); /* 50% - metade do gap */
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    /* Estilo das Labels */
+    .form-group label {
+      font-weight: 600;
+      margin-bottom: 5px; 
+      font-size: 15px; 
+      color: #ccc;
+    }
+    
+    /* Estilo dos Inputs/Selects */
+    input, select {
+      width: 100%;
+      padding: 12px 10px; 
+      border-radius: 8px;
+      background: #333;
+      border: 1px solid #555;
+      color: white;
+      font-size: 15px; 
+      outline: none;
+    }
+    
+    select {
+      appearance: none;
+      cursor: pointer;
+    }
+
+    select option {
+      background-color: #000;
+      color: #fff;
+    }
+    
+    input:focus, select:focus {
+      border-color: #777;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px; 
+      margin-top: 10px;
+    }
+
+    /* Estilo dos Botões */
+    button {
+      flex: 1;
+      padding: 12px 15px; 
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Anton', sans-serif;
+      text-transform: uppercase;
+      font-size: 13px; 
+      color: white;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .btn-calc {
+      background: #333;
+      border: 1px solid #333;
+    }
+
+    .btn-calc:hover {
+      background: #444;
+      border-color: #444;
+    }
+    
+    .btn-clear {
+      background: transparent;
+      border: 1px solid #555;
+    }
+    
+    .btn-clear:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: #777;
+    }
+
+    .resultado, .estatisticas {
+      margin-top: 20px;
+      font-size: 16px; 
+      font-weight: bold;
+      color: #e6ddc5;
+      text-align: center;
+    }
+    .estatisticas {
+        margin-top: 10px;
+        font-size: 14px;
+        font-weight: normal;
+        color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">ACADEMIA</div>
+    <ul>
+      <li><a href="index.html">INÍCIO</a></li>
+      <li><a href="imc.html">IMC</a></li>
+      <li><a href="tmb.html">TMB</a></li> 
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="imc-box">
+      <h1>Calcule seu IMC</h1>
+
+      <form id="formIMC">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="peso">Peso (Kg)</label>
+            <input type="number" id="peso" required step="0.1" min="20" max="300">
+          </div>
+          <div class="form-group">
+            <label for="altura">Altura (cm)</label> 
+            <input type="number" id="altura" required step="1" min="100" max="250"> 
+          </div>
+          <div class="form-group">
+            <label for="idade">Idade</label>
+            <input type="number" id="idade" required min="10" max="120">
+          </div>
+          <div class="form-group">
+            <label for="sexo">Sexo</label>
+            <select id="sexo" required>
+              <option value="">Selecione</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Feminino">Feminino</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button type="submit" class="btn-calc">Calcular IMC</button>
+          <button type="button" id="limpar" class="btn-clear">Limpar</button>
+        </div>
+      </form>
+
+      <div class="resultado" id="resultado"></div>
+      <div class="estatisticas" id="estatisticas"></div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('formIMC');
+    const resultado = document.getElementById('resultado');
+    const estatisticas = document.getElementById('estatisticas');
+
+    function exibirEstatisticas(dados) {
+        if (dados.length === 0) {
+            estatisticas.textContent = '';
+            return;
+        }
+        const total = dados.length;
+        const sobrepeso = dados.filter(d => d.imc >= 25).length;
+        const perc = ((sobrepeso / total) * 100).toFixed(1);
+
+        estatisticas.innerHTML = `📊 ${sobrepeso} de ${total} pessoas (${perc}%) estão com Sobrepeso ou Obesidade.`;
+    }
+    
+    // Carrega estatísticas ao iniciar
+    const dadosIniciais = JSON.parse(localStorage.getItem('imc_dados')) || [];
+    exibirEstatisticas(dadosIniciais);
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const peso = parseFloat(document.getElementById('peso').value);
+      const alturaCm = parseFloat(document.getElementById('altura').value); // Valor em cm
+      
+      if (!peso || !alturaCm) {
+        alert('Preencha todos os campos corretamente.');
+        return;
+      }
+
+      // CONVERSÃO DE CM PARA METROS PARA O CÁLCULO
+      const alturaMetros = alturaCm / 100;
+
+      // CÁLCULO DO IMC
+      const imc = peso / (alturaMetros * alturaMetros);
+      let status = '';
+      if (imc < 18.5) status = 'Abaixo do peso';
+      else if (imc < 25) status = 'Peso normal';
+      else if (imc < 30) status = 'Sobrepeso';
+      else status = 'Obesidade';
+
+      resultado.innerHTML = `Seu IMC é <strong>${imc.toFixed(1)}</strong> — ${status}.`;
+
+      // Salvar dados anônimos
+      let dados = JSON.parse(localStorage.getItem('imc_dados')) || [];
+      dados.push({ peso, altura: alturaMetros, imc, status }); // Salva a altura em metros
+      localStorage.setItem('imc_dados', JSON.stringify(dados));
+
+      exibirEstatisticas(dados);
+    });
+
+    document.getElementById('limpar').addEventListener('click', () => {
+      form.reset();
+      resultado.textContent = '';
+      estatisticas.textContent = '';
+    });
+  </script>
+</body>
+</html>
