@@ -8,7 +8,7 @@ body {
 
 /* HERO */
 .hero {
-  background: url("pngtree-lot-of-tread-lines-in-an-empty-gym-picture-image_2773895.jpg") no-repeat center/cover;
+  background: url("backg.jpg") no-repeat center/cover;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -161,5 +161,6 @@ footer {
 .footer-links a:hover {
   color: #fff;
 }
+
 
 
