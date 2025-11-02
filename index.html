@@ -5,22 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Site de Academia</title>
   
-  <!-- Fontes -->
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   
-  <!-- CSS -->
   <link rel="stylesheet" href="./style.css">
+
+  <style>
+    /* Oculta o texto inicial para que o JavaScript possa revelá-lo */
+    #logo-text {
+      visibility: hidden;
+      white-space: nowrap; /* Impede quebras de linha durante a digitação */
+      overflow: hidden;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- HERO SECTION -->
   <header class="hero">
     <nav>
-      <div class="logo">ACADEMIA</div>
+      <div class="logo">
+        <span id="logo-text">ACADEMIA</span>
+      </div>
       <ul>
         <li><a href="index.html">INÍCIO</a></li>
         <li><a href="imc.html">IMC</a></li>
-        <li><a href="tmb.html">TMB</a></li> </ul>
       </ul>
     </nav>
 
@@ -31,7 +38,6 @@
     </div>
   </header>
 
-  <!-- OFFERS SECTION -->
   <section class="offers">
     <h2>O QUE OFERECEMOS</h2>
     <div class="cards">
@@ -54,7 +60,6 @@
     </div>
   </section>
 
-  <!-- UNLOCK SECTION -->
   <section class="unlock">
     <div class="text">
       <h2>LIBERE SEU POTENCIAL</h2>
@@ -62,22 +67,38 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <p>&copy; 2025 Academia. Todos os direitos reservados.</p>
     <div class="footer-links">
-      <a href="#">Sobre</a> | 
-      <a href="#">Contato</a> | 
-      <a href="#">Instagram</a>
+      <a href="#">Privacidade</a>
+      <a href="#">Termos</a>
     </div>
   </footer>
 
   <script>
-    // Quando clicar no botão JOIN NOW, rola até a seção "O QUE OFERECEMOS"
-    document.getElementById("joinBtn").addEventListener("click", function() {
-      document.querySelector(".offers").scrollIntoView({ behavior: "smooth" });
-    });
+    const logoElement = document.getElementById('logo-text');
+    const textToType = logoElement.textContent;
+    logoElement.textContent = ''; // Limpa o texto inicial
+    logoElement.style.visibility = 'visible'; // Torna o container visível
+
+    let charIndex = 0;
+    const typingSpeed = 100; // Tempo em milissegundos entre cada letra
+
+    function typeWriter() {
+      if (charIndex < textToType.length) {
+        // Adiciona a próxima letra ao conteúdo
+        logoElement.textContent += textToType.charAt(charIndex);
+        charIndex++;
+        // Chama a função novamente após o intervalo de tempo
+        setTimeout(typeWriter, typingSpeed);
+      }
+    }
+
+    // Inicia o efeito de digitação quando a página carrega
+    window.onload = typeWriter; 
   </script>
+  
+  <script src="./script.js"></script>
 
 </body>
 </html>
