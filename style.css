@@ -1,326 +1,163 @@
 /* Fonte padrão */
-
 body {
-
   margin: 0;
-
   font-family: 'Open Sans', sans-serif;
-
   background: #0a1a2f;
-
   color: #fff;
-
 }
-
-
 
 /* HERO */
-
 .hero {
-
-  background: url("backg.jpg") no-repeat center/cover;
-
+  background: url('backg.jpg') no-repeat center/cover;
   height: 100vh;
-
   display: flex;
-
   flex-direction: column;
-
   justify-content: space-between;
-
 }
-
-
 
 /* NAVBAR */
-
 nav {
-
   display: flex;
-
   justify-content: space-between;
-
   padding: 20px 50px;
-
 }
-
-
 
 nav .logo {
-
   font-family: 'Anton', sans-serif;
-
   font-size: 32px;
-
   color: #e6ddc5;
-
 }
-
-
 
 nav ul {
-
   list-style: none;
-
   display: flex;
-
   gap: 30px;
-
   margin: 0;
-
   padding: 0;
-
 }
-
-
 
 nav ul li a {
-
   font-family: 'Anton', sans-serif;
-
   color: #fff;
-
   text-decoration: none;
-
   font-size: 18px;
-
   text-transform: uppercase;
-
 }
-
-
 
 nav ul li a:hover {
-
   color: #e6ddc5;
-
 }
-
-
 
 /* HERO TEXT */
-
 .hero-text {
-
   text-align: center;
-
   margin-bottom: 100px;
-
 }
-
-
 
 .hero-text h1 {
-
   font-family: 'Anton', sans-serif;
-
   font-size: 70px;
-
   font-weight: 900;
-
   text-transform: uppercase;
-
 }
-
-
 
 .hero-text p {
-
   font-size: 22px;
-
   margin: 20px 0;
-
   color: #ddd;
-
 }
-
-
 
 .hero-text button {
-
   background: #e6ddc5;
-
   color: #111;
-
   padding: 14px 32px;
-
   border: none;
-
   font-family: 'Anton', sans-serif;
-
   font-size: 18px;
-
   cursor: pointer;
-
   border-radius: 6px;
-
   transition: 0.3s;
-
 }
-
-
 
 .hero-text button:hover {
-
   background: #c8b98d;
-
 }
-
-
 
 /* OFFERS */
-
 .offers {
-
   padding: 80px 20px;
-
   text-align: center;
-
   background: #111;
-
 }
-
-
 
 .offers h2 {
-
   font-family: 'Anton', sans-serif;
-
   font-size: 46px;
-
   margin-bottom: 40px;
-
 }
-
-
 
 .cards {
-
   display: flex;
-
   gap: 20px;
-
   flex-wrap: wrap;
-
   justify-content: center;
-
 }
-
-
 
 .card {
-
   background: #222;
-
   padding: 20px;
-
   border-radius: 12px;
-
   font-size: 20px;
-
   font-weight: 600;
-
   color: #e6ddc5;
-
   width: 220px;
-
   transition: transform 0.3s;
-
 }
-
-
 
 .card img {
-
   width: 100%;
-
   border-radius: 10px;
-
   margin-bottom: 10px;
-
 }
-
-
 
 .card:hover {
-
   transform: translateY(-8px);
-
 }
-
-
 
 /* UNLOCK */
-
 .unlock {
-
   padding: 80px 20px;
-
   background: #0a1a2f;
-
   text-align: center;
-
 }
-
-
 
 .unlock h2 {
-
   font-family: 'Anton', sans-serif;
-
   font-size: 50px;
-
   margin-bottom: 20px;
-
 }
-
-
 
 .unlock p {
-
   font-size: 20px;
-
   color: #ccc;
-
 }
-
-
 
 /* FOOTER */
-
 footer {
-
   background: #111;
-
   padding: 20px;
-
   text-align: center;
-
   color: #bbb;
-
   font-size: 14px;
-
 }
-
-
 
 .footer-links a {
-
   color: #e6ddc5;
-
   text-decoration: none;
-
   margin: 0 5px;
-
   font-weight: bold;
-
 }
-
-
 
 .footer-links a:hover {
-
   color: #fff;
-
 }
-
