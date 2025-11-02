@@ -71,7 +71,7 @@ nav ul li a:hover {
   font-size: 70px;
   font-weight: 900;
   text-transform: uppercase;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Adicionado sombra para destaque */
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.7); 
 }
 
 .hero-text p {
@@ -117,7 +117,7 @@ nav ul li a:hover {
   padding: 80px 20px;
   text-align: center;
   background: #111;
-  color: white; /* Garante que o texto seja branco */
+  color: white; 
 }
 
 .offers h2 {
@@ -158,7 +158,7 @@ nav ul li a:hover {
 /* UNLOCK */
 .unlock {
   padding: 80px 20px;
-  background: #000; /* Preto sólido */
+  background: #000; /* AGORA É PRETO SÓLIDO */
   text-align: center;
 }
 
@@ -176,7 +176,7 @@ nav ul li a:hover {
 
 /* FOOTER */
 footer {
-  background: #1a1a1a; /* Escurecido */
+  background: #1a1a1a; 
   padding: 20px 50px; 
   display: flex;
   justify-content: space-between;
