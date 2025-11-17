@@ -161,3 +161,13 @@ footer {
 .footer-links a:hover {
   color: #fff;
 }
+
+/* Estilização do GYM TECH */
+nav .logo a {
+  text-decoration: none;   /* remove o sublinhado */
+  color: #e6ddc5;          /* mesma cor usada em SOBRE no hover */
+}
+
+nav .logo a:hover {
+  color: #fff;             /* mesmo comportamento dos links do menu */
+}
